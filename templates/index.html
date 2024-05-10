@@ -16,8 +16,8 @@
             {% for product in products %}
             <div class="col-md-6 mb-4">
                 <div class="card">
-                    <a onclick="getProduct('{{product['Nome']}}')"> <!--DEVO RISOLVERE STA COSA!!! DA ERRORE!!!!!!!!!!!-->
-                        <img src="{{ product['Immagine'] }}" class="card-img-top" alt="{{ product['Nome'] }}">
+                    <a onclick="getProduct('{{product.Nome}}')">
+                        <img src="{{ product['Immagine'] }}" class="card-img-top" alt="{{ product.Nome }}">
                     </a>
                 </div>
             </div>
