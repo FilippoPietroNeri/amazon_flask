@@ -8,14 +8,14 @@ df = pd.read_csv('prodotti.csv')
 
 @app.route('/')
 def homepage():
-    page = request.args.get('page', type=int) or 1 # perchè se è 0 da errore 😭😭😭😭
+    page = request.args.get('page', type=int) or 1 # easy fix!
     start_index = (page - 1) * itemsPerPage
     print(start_index)
     end_index = start_index + itemsPerPage
     print(end_index)
     pageProducts = df.iloc[start_index:end_index]
     print(pageProducts)
-    num_pages = len(df) // itemsPerPage + (1 if len(df) % itemsPerPage > 0 else 0) # devo scoprire cosa fa perchè non l'ho ancora capito!!
+    num_pages = len(df) // itemsPerPage + (1 if len(df) % itemsPerPage > 0 else 0) # Se la lunghezza del dataframe modulo gli item per pagina è maggiore di 0 il risultato deve essere 1 oppure 0.
     print(num_pages)
     return render_template('index.html', page=page, num_pages=num_pages, products=pageProducts.to_dict('records'), prodlens=len(pageProducts.to_dict('records')))
 
